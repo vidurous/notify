@@ -1,6 +1,12 @@
 #!/bin/sh
 ts=`date +%H:%M`
 ts2=`date +%H:%M:%S-%Z`
+
+user="foo"
+$description="server does whatever"
+$process="systemd process you are using"
+$server="local server sending the email"
+
 export epoch=`date +%s`
 export EMAIL=$process
 tar zcvf /home/$user/bin/logs/$process.log.$ts.tar.gz /home/$user/$description/notify-service.log 2>1
