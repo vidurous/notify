@@ -1,0 +1,16 @@
+[Unit]
+Description=newcase notify service redhat internal
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/$user/$processdir/
+ExecStart=/home/$user/$processdir/$process.py -t 5 --debug
+ExecStartPost=/home/$user/bin/alert.sh
+Restart=on-failure
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
